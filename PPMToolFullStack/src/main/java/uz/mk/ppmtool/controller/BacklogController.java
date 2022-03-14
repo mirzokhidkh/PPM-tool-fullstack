@@ -27,8 +27,8 @@ public class BacklogController {
     @PostMapping("/{backlog_id}")
     public ResponseEntity<?> addPTtoBacklog(@Valid @RequestBody ProjectTask projectTask,
                                             BindingResult result, @PathVariable String backlog_id, @CurrentUser User user) {
-        ResponseEntity<?> errorMap = mapValidationErrorService.MapValidationService(result);
-        if (errorMap != null) return errorMap;
+//        ResponseEntity<?> errorMap = mapValidationErrorService.MapValidationService(result);
+//        if (errorMap != null) return errorMap;
 
         ProjectTask savedProjectTask = projectTaskService.addProjectTask(backlog_id, projectTask, user.getUsername());
         return ResponseEntity.status(HttpStatus.CREATED).body(savedProjectTask);
@@ -50,8 +50,8 @@ public class BacklogController {
     @PatchMapping("/{backlog_id}/{pt_id}")
     public ResponseEntity<?> update(@Valid @RequestBody ProjectTask projectTask, BindingResult result,
                                     @PathVariable String backlog_id, @PathVariable String pt_id,@CurrentUser User user) {
-        ResponseEntity<?> errorMap = mapValidationErrorService.MapValidationService(result);
-        if (errorMap != null) return errorMap;
+//        ResponseEntity<?> errorMap = mapValidationErrorService.MapValidationService(result);
+//        if (errorMap != null) return errorMap;
 
         ProjectTask updatedProjectTask = projectTaskService.updateBYProjectSequence(projectTask, backlog_id, pt_id,user.getUsername());
 

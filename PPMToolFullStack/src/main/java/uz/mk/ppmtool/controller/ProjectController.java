@@ -24,12 +24,12 @@ public class ProjectController {
     private final MapValidationErrorService mapValidationErrorService;
 
     @PostMapping
-    public ResponseEntity<?> createOrEdit(@Valid @RequestBody Project project, BindingResult result,  @CurrentUser User user) {
+    public ResponseEntity<?> createOrEdit(@Valid @RequestBody Project project,  @CurrentUser User user) {
 
-        ResponseEntity<?> errorMap = mapValidationErrorService.MapValidationService(result);
-        if (errorMap != null) {
-            return errorMap;
-        }
+//        ResponseEntity<?> errorMap = mapValidationErrorService.MapValidationService(result);
+//        if (errorMap != null) {
+//            return errorMap;
+//        }
         Project saveOrEditProject = projectService.saveOrEditProject(project, user.getUsername());
         return ResponseEntity.status(HttpStatus.CREATED).body(saveOrEditProject);
     }
