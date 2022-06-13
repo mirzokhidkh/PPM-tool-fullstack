@@ -40,7 +40,9 @@ public class JwtTokenProvider {
 
     public boolean validateToken(String token) {
         try {
-            Jwts.parser().setSigningKey(SECRET).parseClaimsJws(token);
+            Jwts.parser()
+                    .setSigningKey(SECRET)
+                    .parseClaimsJws(token);
             return true;
         } catch (SignatureException ex) {
             System.out.println("Invalid JWT Signature");
@@ -58,7 +60,10 @@ public class JwtTokenProvider {
 
 
     public Long getUserIdTokenJWT(String token) {
-        Claims claims = Jwts.parser().setSigningKey(SECRET).parseClaimsJws(token).getBody();
+        Claims claims = Jwts.parser()
+                .setSigningKey(SECRET)
+                .parseClaimsJws(token)
+                .getBody();
         String id = (String) claims.get("id");
         return Long.parseLong(id);
     }
